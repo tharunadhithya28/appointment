@@ -36,7 +36,7 @@ const Appointment = () => {
         }
       }
 
-      (async () => await fetchItems())()
+     fetchItems()
     })
 
     const changeTheme = () => {

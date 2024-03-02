@@ -27,13 +27,13 @@ const List = (props) => {
             </tr>
           </thead>
           <tbody className="divide-y-2">
-            {props.items.map(eachItem => {
+            {props.items.map((eachItem, key) => {
               const index = props.items.indexOf(eachItem)
               const listDate = eachItem.appointmentDate
               const reqDate = dateFormat(listDate,"dd mmm yyyy" )
               return (
-                <tr className="items-start content-start">
-                  <td className={`sm:px-1 sm:py-1 lg:px-10 lg:py-6 flex items-center gap-2 ${isDark ? "text-white" : "text-slate-700"}`}>
+                <tr className="items-start content-start" key={eachItem.id}>
+                  <td className={`sm:px-1 sm:py-1 lg:px-10 lg:py-6 flex items-center gap-2 ${isDark ? "text-white" : "text-slate-700"}`} key={eachItem.id}>
                     <CgProfile size={35} />
                     <div className="flex flex-col">
                       <span className=" font-medium sm:text-sm lg:text-lg">  {eachItem.patientName} </span>

@@ -16,9 +16,7 @@ const Appointment = () => {
         try {
           setLoading(true)
           const response = await fetch("https://gist.githubusercontent.com/telematum/7751eec667033ac8acd244542e464e18/raw/d4710c6fb54224a0bd316ecdc5246633aceefce5/todays.json")
-          localStorage.getItem("theme")
           if (!response.ok) throw Error("Data not received")
-          console.log(response)
           const listItems = await response.json()
           const finalListItems = listItems.appointments.map(eachItem => ({
            appointmentDate : eachItem.appointment_date,
@@ -28,24 +26,22 @@ const Appointment = () => {
            mobileNumber : eachItem.mobile_number,
            patientName : eachItem.patient_name
           }))
-          console.log(finalListItems)
           setItems(finalListItems)
           setFetchError(null)
         }catch (err){
-          console.log(fetchError)
           setFetchError(err.message)
-        }finally{
+          console.log(fetchError)
+        } finally{
           setLoading(false)
         }
       }
 
-       fetchItems()
-    }, [])
+      (async () => await fetchItems())()
+    })
 
     const changeTheme = () => {
       const currentTheme = !isDark
       setTheme(currentTheme)
-      localStorage.setItem("theme", isDark);
     }
 
     const renderLoader = () => (

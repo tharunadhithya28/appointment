@@ -27,7 +27,7 @@ const List = (props) => {
             </tr>
           </thead>
           <tbody className="divide-y-2">
-            {props.items.map((eachItem, key) => {
+            {props.items.map((eachItem) => {
               const index = props.items.indexOf(eachItem)
               const listDate = eachItem.appointmentDate
               const reqDate = dateFormat(listDate,"dd mmm yyyy" )

@@ -36,8 +36,8 @@ const Appointment = () => {
         }
       }
 
-     fetchItems()
-    })
+      (async () => await fetchItems())()
+    }, [])
 
     const changeTheme = () => {
       const currentTheme = !isDark
